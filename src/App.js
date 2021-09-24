@@ -18,8 +18,10 @@ function App() {
   }
 
   function solveMap() {
+    // If the solvedArray is empty it has not bee solved.
     if (!solvedArray.length) {
       const [newMap, numTrees] = solve(inputArray);
+      setInputArray([]);
       setSolvedArray([...newMap]);
       setTreesHit(numTrees);
     }
@@ -29,7 +31,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Toboggan Safety</h1>
-        <DisplayArray array={inputArray} />
+        <DisplayArray array={inputArray.length ? inputArray : solvedArray} />
         <div>
           <button onClick={generateMap}>Generate</button>
           <button onClick={solveMap}>Solve</button>
