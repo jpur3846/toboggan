@@ -20,7 +20,7 @@ function App() {
   function solveMap() {
     if (!solvedArray.length) {
       const [newMap, numTrees] = solve(inputArray);
-      // setSolvedArray([...newMap]);
+      setSolvedArray([...newMap]);
       setTreesHit(numTrees);
     }
   }
