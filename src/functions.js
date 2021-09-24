@@ -32,16 +32,17 @@ export const generateInputMap = (height, width) => {
 Mutates the input array to provide a solution.
 */
 export const solve = (inputArray) => {
+    var outputArray = [...inputArray];
     var j = 0;
     var numTrees = 0;
-    for (var i = 0; i < inputArray.length; i++) {
-        if (inputArray[i][j] === '❄️') {
-            inputArray[i][j] = '🅾️';
-        } else {
+    for (var i = 0; i < outputArray.length; i++) {
+        if (outputArray[i][j] === '❄️') {
+            outputArray[i][j] = '🅾️';
+        } else if (outputArray[i][j] === '🌲') {
             numTrees++;
-            inputArray[i][j] = '❌';
+            outputArray[i][j] = '❌';
         }
         j += 3;
     }
-    return [inputArray, numTrees];
+    return [outputArray, numTrees];
 }

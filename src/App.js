@@ -6,26 +6,30 @@ import DisplayArray from './DisplayArray';
 /* 🅾️ ❌ ❄️ 🌲 */
 
 function App() {
-  const [outputArray, setOutputArray] = useState([]);
+  const [inputArray, setInputArray] = useState([]);
+  const [solvedArray, setSolvedArray] = useState([]);
   const [treesHit, setTreesHit] = useState(0);
 
   function generateMap() {
     var newMap = generateInputMap(10, 50);
     setTreesHit(0);
-    setOutputArray([...newMap]);
+    setInputArray([...newMap]);
+    setSolvedArray([]);
   }
 
   function solveMap() {
-    const [newMap, numTrees] = solve(outputArray);
-    setOutputArray([...newMap]);
-    setTreesHit(numTrees);
+    if (!solvedArray.length) {
+      const [newMap, numTrees] = solve(inputArray);
+      setSolvedArray([...newMap]);
+      setTreesHit(numTrees);
+    }
   }
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>Toboggan Safety</h1>
-        <DisplayArray array={outputArray} />
+        <DisplayArray array={inputArray} />
         <div>
           <button onClick={generateMap}>Generate</button>
           <button onClick={solveMap}>Solve</button>
