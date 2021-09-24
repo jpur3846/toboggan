@@ -32,7 +32,7 @@ export const generateInputMap = (height, width) => {
 Mutates the input array to provide a solution.
 */
 export const solve = (inputArray) => {
-    var outputArray = [...inputArray];
+    var outputArray = inputArray.map(arr => arr.slice());
     var j = 0;
     var numTrees = 0;
     for (var i = 0; i < outputArray.length; i++) {
